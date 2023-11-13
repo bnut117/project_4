@@ -1,7 +1,6 @@
 import pandas as pd
 import plotly.express as px
 import streamlit as st
-from matplotlib import pyplot as plt
 
 vehicles = pd.read_csv('/Users/bnutw/DS_items/GitHub/project_4/vehicles_us.csv')
 vehicles['model_year'].fillna(0, inplace=True)
