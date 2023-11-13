@@ -2,7 +2,7 @@ import pandas as pd
 import plotly.express as px
 import streamlit as st
 
-vehicles = pd.read_csv('/Users/bnutw/DS_items/GitHub/project_4/vehicles_us.csv')
+vehicles = pd.read_csv('vehicles_us.csv')
 vehicles['model_year'].fillna(0, inplace=True)
 vehicles['cylinders'].fillna(0, inplace=True)
 vehicles['odometer'].fillna(0, inplace=True)
