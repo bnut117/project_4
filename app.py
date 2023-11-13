@@ -6,7 +6,6 @@ vehicles = pd.read_csv('vehicles_us.csv')
 vehicles['model_year'].fillna(0, inplace=True)
 vehicles['cylinders'].fillna(0, inplace=True)
 vehicles['odometer'].fillna(0, inplace=True)
-vehicles['paint_color'].fillna(0, inplace=True)
 vehicles['is_4wd'].fillna(0, inplace=True)
 vehicles['is_4wd'] = vehicles['is_4wd'].map({1.0: 'yes', 0.0: 'no'})
 
