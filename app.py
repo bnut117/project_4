@@ -9,6 +9,31 @@ vehicles['odometer'].fillna(0, inplace=True)
 vehicles['is_4wd'].fillna(0, inplace=True)
 vehicles['is_4wd'] = vehicles['is_4wd'].map({1.0: 'yes', 0.0: 'no'})
 
+
+median_years = vehicles[vehicles['model_year'] != 0].groupby('model')['model_year'].median()
+
+for model in median_years.index:
+    median_year = median_years[model]
+    vehicles.loc[(vehicles['model_year'] == 0) & (vehicles['model'] == model), 'model_year'] = median_year
+
+
+
+median_cylinders = vehicles[vehicles['cylinders'] != 0].groupby('model')['cylinders'].median()
+
+for model in median_cylinders.index:
+    median_cylinder = median_cylinders[model]
+    vehicles.loc[(vehicles['cylinders'] == 0) & (vehicles['model'] == model), 'cylinders'] = median_cylinder
+
+
+
+fill_values = vehicles.groupby(['model', 'model_year'])['odometer'].median()
+
+for (model, model_year), value in fill_values.items():
+    vehicles.loc[(vehicles['odometer'] == 0) & (vehicles['model'] == model) & (vehicles['model_year'] == model_year), 'odometer'] = value
+
+
+
+
 make_model = vehicles['model'].str.split(' ', n=1, expand=True)
 make_model = make_model.rename(columns={0: 'make', 1: 'model'})
 
