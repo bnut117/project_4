@@ -16,5 +16,4 @@ Libraries needed to implement include, but are not limited to:
     import pandas as pd
     import plotly.express as px
     import streamlit as st
-    from matplotlib import pyplot as plt
 
